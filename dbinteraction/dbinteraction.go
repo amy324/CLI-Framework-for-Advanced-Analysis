@@ -1,4 +1,4 @@
-// dbinteraction.go
+
 package dbinteraction
 
 import (
@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"github.com/joho/godotenv"
 
-	_ "github.com/lib/pq"
+	"github.com/joho/godotenv"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func init() {
@@ -18,18 +18,20 @@ func init() {
 	}
 }
 
-// ConnectDB connects to the PostgreSQL database.
+// ConnectDB connects to the MySQL database.
 func ConnectDB() (*sql.DB, error) {
-	// Retrieve PostgreSQL details from environment variables
-	user := os.Getenv("POSTGRES_USER")
-	password := os.Getenv("POSTGRES_PASSWORD")
-	dbname := os.Getenv("POSTGRES_DB")
+	// Retrieve MySQL details from environment variables
+	user := os.Getenv("MYSQL_USER")
+	password := os.Getenv("MYSQL_PASSWORD")
+	dbname := os.Getenv("MYSQL_DB")
+	host := os.Getenv("MYSQL_HOST")
+	port := os.Getenv("MYSQL_PORT")
 
-	connStr := fmt.Sprintf("user=%s dbname=%s password=%s sslmode=disable", user, dbname, password)
+	connStr := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, password, host, port, dbname)
 
-	log.Printf("Connecting to PostgreSQL with connection string: %s", connStr)
+	log.Printf("Connecting to MySQL with connection string: %s", connStr)
 
-	db, err := sql.Open("postgres", connStr)
+	db, err := sql.Open("mysql", connStr)
 	if err != nil {
 		return nil, err
 	}
@@ -38,8 +40,6 @@ func ConnectDB() (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	
 
 	return db, nil
 }
