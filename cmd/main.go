@@ -1,19 +1,18 @@
-// main.go
 package main
 
 import (
+	"analysis-tool/dataanalysis"
+	"analysis-tool/dbinteraction"
+	"analysis-tool/genericanalysis"
+	"analysis-tool/pythonintegration"
 	"fmt"
 	"os"
 	"strconv"
 	"strings"
 
-	"analysis-tool/dataanalysis"
-	"analysis-tool/dbinteraction"
-	"analysis-tool/pythonintegration"
-	"analysis-tool/statsanalysis"
-
 	"github.com/spf13/cobra"
 )
+
 
 var rootCmd = &cobra.Command{
 	Use:   "your-cli-tool",
@@ -24,31 +23,54 @@ var analyseDataCmd = &cobra.Command{
 	Use:   "analysedata",
 	Short: "Perform data analysis tasks",
 	Run: func(cmd *cobra.Command, args []string) {
-		dataanalysis.AnalyseData()
+		db, err := dbinteraction.ConnectDB()
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		defer db.Close()
+
+		dataanalysis.PerformDataAnalysis(db)
 	},
 }
 
+
 var runPythonCmd = &cobra.Command{
-	Use:   "runpython [scriptPath]",
-	Short: "Run a Python script",
-	Args:  cobra.ExactArgs(1),
+    Use:   "runpython [scriptPath] [customArgs...]",
+    Short: "Run a Python script",
+    Args:  cobra.MinimumNArgs(1),
+    Run: func(cmd *cobra.Command, args []string) {
+        scriptPath := args[0]
+        customArgs := args[1:]
+        err := pythonintegration.RunPythonScript(scriptPath, dbInteractionCallback, customArgs...)
+        if err != nil {
+            fmt.Println(err)
+        }
+    },
+}
+
+
+// dbInteractionCallback is a placeholder function for database interactions.
+func dbInteractionCallback() error {
+	// Implement your database interaction logic here
+	fmt.Println("Performing database interaction...")
+	// Example: Connect to the database and execute queries
+
+	return nil
+}
+
+var genericAnalysisCmd = &cobra.Command{
+	Use:   "genericanalysis [analysisType] [analysisArgs...]",
+	Short: "Perform generic analysis",
+	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		scriptPath := args[0]
-		err := pythonintegration.RunPythonScript(scriptPath)
+		analysisType := args[0]
+		analysisArgs := args[1:]
+		err := genericanalysis.Analyse(analysisType, dbInteractionCallback, analysisArgs...)
+
 		if err != nil {
 			fmt.Println(err)
 		}
-	},
-}
-
-var calcMeanCmd = &cobra.Command{
-	Use:   "calcmean [numbers]",
-	Short: "Calculate the mean of numbers",
-	Args:  cobra.ExactArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
-		numbers := parseNumbers(args[0])
-		mean := statsanalysis.Mean(numbers)
-		fmt.Printf("Mean: %.2f\n", mean)
 	},
 }
 
@@ -66,7 +88,7 @@ var connectDBCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(analyseDataCmd)
 	rootCmd.AddCommand(runPythonCmd)
-	rootCmd.AddCommand(calcMeanCmd)
+	rootCmd.AddCommand(genericAnalysisCmd)
 	rootCmd.AddCommand(connectDBCmd)
 	// Add other commands as needed
 }
