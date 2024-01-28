@@ -1,4 +1,5 @@
 // dataanalysis.go
+
 package dataanalysis
 
 import (
@@ -22,4 +23,5 @@ func logisticRegressionAnalysis(db *sql.DB) {
 	// Placeholder for logistic regression analysis logic
 	fmt.Println("Performing logistic regression analysis...")
 	// Add your logistic regression analysis code using the database connection
+	// ...
 }
