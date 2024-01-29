@@ -140,31 +140,31 @@ func RunPythonScript(scriptPath string, callback func() error, customArgs ...str
 	cmd := exec.Command("python", append([]string{scriptPath}, customArgs...)...)
 	cmd.Dir = workingDir // Set the working directory for the command
 
-	// Run the command and capture the output
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		return 0.0, fmt.Errorf("error running Python script: %v\nOutput:\n%s", err, output)
-	}
-
-	// Parse the accuracy value from the script output
-	accuracy, err := parseAccuracyFromOutput(string(output))
-	if err != nil {
-		return 0.0, err
-	}
-
-	// Invoke the callback
-	if callback != nil {
-		err = callback()
-		if err != nil {
-			return 0.0, err
-		}
-	}
-
-	fmt.Println("Script Path:", scriptPath)
-	fmt.Println("Accuracy from Python script:", accuracy)
-
-	return accuracy, nil
-}
+	   // Run the command and capture the output
+	   output, err := cmd.CombinedOutput()
+	   if err != nil {
+		   return 0.0, fmt.Errorf("error running Python script: %v", err)
+	   }
+   
+	   // Parse the accuracy value from the script output
+	   accuracy, err := parseAccuracyFromOutput(string(output))
+	   if err != nil {
+		   return 0.0, err
+	   }
+   
+	   // Invoke the callback
+	   if callback != nil {
+		   err = callback()
+		   if err != nil {
+			   return 0.0, err
+		   }
+	   }
+   
+	   // Print a concise and user-friendly message
+	   fmt.Printf("Script executed successfully.\nAccuracy: %.2f\n", accuracy)
+   
+	   return accuracy, nil
+   }
 
 func parseAccuracyFromOutput(output string) (float64, error) {
 	fmt.Println("Python script output:", output) // Print the output for debugging
@@ -264,14 +264,6 @@ var connectDBCmd = &cobra.Command{
 }
 
 
-// func init() {
-// 	rootCmd.AddCommand(analyseDataCmd)
-// 	runPythonCmd.Flags().Bool("db-interaction", false, "Perform database interaction")
-// 	rootCmd.AddCommand(runPythonCmd)
-// 	rootCmd.AddCommand(genericAnalysisCmd)
-// 	rootCmd.AddCommand(connectDBCmd)
-// 	// Add other commands as needed
-// }
 
 func main() {
 	err := godotenv.Load()

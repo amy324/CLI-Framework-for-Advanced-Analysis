@@ -4,6 +4,20 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+import warnings
+
+
+# Specify the correct path to the CA bundle
+ca_bundle_path = r"C:\Program Files\Git\mingw64\etc\ssl\certs\ca-bundle.trust.crt"
+
+# Set the REQUESTS_CA_BUNDLE environment variable
+os.environ['REQUESTS_CA_BUNDLE'] = ca_bundle_path
+
+# Set the REQUESTS_CA_BUNDLE environment variable
+os.environ['REQUESTS_CA_BUNDLE'] = ca_bundle_path
+
+# Suppress all warnings
+warnings.filterwarnings("ignore")
 
 def perform_logistic_regression(csv_file, *custom_args):
     # Use custom_args as needed

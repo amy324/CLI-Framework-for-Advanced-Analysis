@@ -8,13 +8,8 @@ import (
 
 	"os"
 
-	
 	_ "github.com/go-sql-driver/mysql"
-	
 )
-
-
-
 
 func ConnectDB() (*sql.DB, error) {
 	user := os.Getenv("DB_USER")
@@ -25,7 +20,7 @@ func ConnectDB() (*sql.DB, error) {
 
 	connStr := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, password, host, port, dbname)
 
-	log.Printf("Connecting to MySQL with connection string: %s", connStr)
+	log.Printf("Connecting to MySQL")
 
 	db, err := sql.Open("mysql", connStr)
 	if err != nil {
@@ -43,7 +38,6 @@ func ConnectDB() (*sql.DB, error) {
 
 	return db, nil
 }
-
 
 // ...
 func InsertAnalysisResults(db *sql.DB, scriptPath string, accuracy float64) error {

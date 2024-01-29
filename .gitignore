@@ -1,3 +1,5 @@
 .env
 
 venv/
+
+cmd/my-cli-tool.exe
