@@ -33,7 +33,7 @@ Using This Program
 bash
 
 `Clone the repository
-git clone https://github.com/your-username/your-cli-tool.git`
+git clone https://github.com/amy324/CLI-Framework-for-Advanced-Analysis`
 
 - Navigate to the project directory
 `cd your-cli-tool`
