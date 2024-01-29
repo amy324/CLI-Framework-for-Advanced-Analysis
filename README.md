@@ -36,7 +36,7 @@ bash
 git clone https://github.com/amy324/CLI-Framework-for-Advanced-Analysis`
 
 - Navigate to the project directory
-`cd your-cli-tool`
+`cd my-cli-tool`
 
 - Install dependencies and configure environment variables
 `go get -v ./...`
