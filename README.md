@@ -224,7 +224,7 @@ Feel free to reach out for any questions or further assistance. Happy analysing!
 
 ## About the Author
 
-The author of this program holds a master of Research degree in statistics, bringing a strong background of advanced statistical theory to her engineering work. She has a passion for all things math related and loves using her work to demonstrate how statistical techniques and a solid understanding of mathematical theory can be leveraged in software engineering to solve interesting problems and build robust, scalable applcations.
+I hold a Master of Research degree in statistics, bringing a solid foundation in advanced statistical theory to the world of engineering. With a passion for both mathematics and programming, I thoroughly enjoy demonstrating how statistical techniques and a deep understanding of mathematical theory can be leveraged in software engineering to solve challenges and develop resilient, scalable applications.
 
  
 ## Contributing
