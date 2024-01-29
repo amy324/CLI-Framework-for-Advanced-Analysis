@@ -220,7 +220,7 @@ Customize the tool by modifying the provided scripts and adding new functionalit
 
 **Note**: Ensure that you have Go and Python installed on your system before running the tool.
 
-Feel free to reach out for any questions or further assistance. Happy analysing!
+Feel free to reach out for any questions or further assistance. 
 
 ## About the Author
 
