@@ -16,7 +16,8 @@ def perform_logistic_regression(csv_file, *custom_args):
     csv_file_path = os.path.join(root_dir, csv_file)
 
     # Load the dataset (assuming a CSV format)
-    df = pd.read_csv(csv_file_path)
+    df = pd.read_csv("../cmd/input_data.csv")
+
 
     # Assuming the last column is the target variable and the rest are features
     X = df.iloc[:, :-1]

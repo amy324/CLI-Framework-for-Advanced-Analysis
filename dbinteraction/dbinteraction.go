@@ -1,4 +1,4 @@
-// dbinteraction.go
+// Interacts with MySQL database
 package dbinteraction
 
 import (
@@ -10,7 +10,7 @@ import (
 
 	
 	_ "github.com/go-sql-driver/mysql"
-	//"github.com/joho/godotenv"
+	
 )
 
 

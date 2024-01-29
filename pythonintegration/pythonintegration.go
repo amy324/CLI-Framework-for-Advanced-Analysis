@@ -1,4 +1,4 @@
-// pythonintegration.go
+// Integrates python script(s) with golang prograam
 
 package pythonintegration
 

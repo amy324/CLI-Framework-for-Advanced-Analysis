@@ -1,5 +1,7 @@
 // dataanalysis.go
 
+//While genericanalysis.go allows for genericuse in a variety of cases, rather than writing the code specifically for hardcoded data, you can hardcode data here for specifc use, the logisticregression function has been used again here as a placeholder
+
 package dataanalysis
 
 import (
@@ -18,10 +20,10 @@ func PerformDataAnalysis(db *sql.DB) {
 	// Add more analysis tasks as needed
 }
 
-// logisticRegressionAnalysis performs logistic regression analysis.
+// You can add functions here if you wpuld like the analysis code to be performed in Go language, rather than python
 func logisticRegressionAnalysis(db *sql.DB) {
-	// Placeholder for logistic regression analysis logic
+	// Placeholder for analysis logic
 	fmt.Println("Performing logistic regression analysis...")
-	// Add your logistic regression analysis code using the database connection
+	// Add your  analysis code using the database connection 
 	// ...
 }
