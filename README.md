@@ -8,7 +8,7 @@ Overview
 
 Welcome to this framework for an Adavanced Data Analysis CLI tool , a comprehensive and extensible framework designed to streamline advanced data analysis tasks through a command-line interface. Serving as a versatile toolkit, this framework empowers users to conduct a wide range of analyses, from generic statistical computations to specific data analytics. Its modular architecture allows for easy integration of custom analysis methods, making it a flexible solution for both general and domain-specific data analysis needs. A powerful command-line interface designed for advanced data analysis, this tool is built with a focus on  engineering principles, providing a robust and extensible platform.
 
-This framework has been written in `Go(Golang)` with `Python` integration.
+This framework has been written in `Go(Golang)` with `Python` integration and incorporates `MySQl` database.
 
 Features
 --------
