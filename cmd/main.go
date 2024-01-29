@@ -119,6 +119,7 @@ func init() {
 }
 
 var analyseDataCmd = &cobra.Command{
+	//Populate dataanalysis.go to your requirements in order to use this command
 	Use:   "analysedata",
 	Short: "Perform data analysis tasks",
 	Run: func(cmd *cobra.Command, args []string) {
