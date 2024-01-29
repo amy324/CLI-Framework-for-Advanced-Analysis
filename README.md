@@ -208,7 +208,7 @@ The tool is designed to be extensible, allowing users to add new analysis method
 
 ### User Interface
 
-Utilizing the Cobra library, the command-line interface follows established principles of usability and provides clear and concise commands. It offers a seamless experience for users with varying levels of technical expertise.
+Utilising the Cobra library, the command-line interface follows established principles of usability and provides clear and concise commands. It offers a seamless experience for users with varying levels of technical expertise.
 
 ### Customization
 
