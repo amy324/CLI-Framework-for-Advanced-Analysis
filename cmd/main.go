@@ -249,7 +249,7 @@ var genericAnalysisCmd = &cobra.Command{
 
 var connectDBCmd = &cobra.Command{
 	Use:   "connectdb",
-	Short: "Connect to the PostgreSQL database",
+	Short: "Connect to the mySQL database",
 	Run: func(cmd *cobra.Command, args []string) {
 		db, err := dbinteraction.ConnectDB()
 		if err != nil {
